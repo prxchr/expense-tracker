@@ -11,15 +11,15 @@ st.set_page_config(
 
 st.title("Personal Expense Tracker & Forecasting")
 
-# Predefined categories and payment methods (can add more if needed)
+# Predefined categories and payment methods (you can customize this)
 CATEGORIES = ['Food', 'Transport', 'Utilities', 'Entertainment', 'Groceries', 'Health', 'Rent', 'Other']
 PAYMENT_METHODS = ['Cash', 'Credit Card', 'Debit Card', 'Bank Transfer', 'Other']
 
-# Session state to keep manual expenses during the session
+# Initialize session state for manual expenses
 if 'manual_expenses' not in st.session_state:
     st.session_state.manual_expenses = pd.DataFrame(columns=['Date', 'Category', 'Amount', 'Payment Method', 'Description'])
 
-# Section: Manual expense entry form
+# Manual expense entry form
 with st.expander("Add an expense manually"):
     with st.form("manual_expense_form"):
         col1, col2, col3 = st.columns(3)
@@ -44,10 +44,9 @@ with st.expander("Add an expense manually"):
         st.session_state.manual_expenses = pd.concat([st.session_state.manual_expenses, new_expense], ignore_index=True)
         st.success("Expense added!")
 
-# Section: Optional CSV upload
+# CSV upload section
 uploaded_file = st.file_uploader("Or upload an expenses CSV file", type=["csv"])
 
-# Load and validate CSV if uploaded
 uploaded_df = None
 if uploaded_file:
     try:
@@ -64,13 +63,13 @@ if uploaded_file:
         st.error(f"Error reading CSV file: {e}")
         uploaded_df = None
 
-# Combine manual expenses and uploaded CSV (if any)
+# Combine manual and uploaded data
 if uploaded_df is not None:
     combined_df = pd.concat([uploaded_df, st.session_state.manual_expenses], ignore_index=True)
 else:
     combined_df = st.session_state.manual_expenses.copy()
 
-# If we have any expenses at all, show analytics and forecasting
+# Show analytics if any data present
 if not combined_df.empty:
     st.subheader("Expense Data")
     st.dataframe(combined_df)
@@ -79,7 +78,7 @@ if not combined_df.empty:
     total_spent = combined_df['Amount'].sum()
     st.metric("Total Spending", f"${total_spent:,.2f}")
 
-    # Spending by category pie chart
+    # Spending by category
     category_sum = combined_df.groupby('Category')['Amount'].sum().reset_index()
     fig1 = px.pie(category_sum, values='Amount', names='Category', title='Spending by Category')
     st.plotly_chart(fig1, use_container_width=True)
@@ -105,6 +104,36 @@ if not combined_df.empty:
         st.plotly_chart(fig3, use_container_width=True)
     except Exception as e:
         st.warning(f"Forecasting skipped due to error: {e}")
+
+    # Personalized money-saving advice
+    st.subheader("Personalized Money-Saving Advice")
+
+    biggest_cat = category_sum.loc[category_sum['Amount'].idxmax()]['Category']
+    biggest_cat_amount = category_sum['Amount'].max()
+
+    advice_dict = {
+        'Food': "Consider cooking at home more often and reducing takeout or restaurant meals.",
+        'Transport': "Try carpooling, public transportation, or biking to save on fuel and maintenance.",
+        'Utilities': "Reduce electricity and water usage; unplug devices when not in use.",
+        'Entertainment': "Look for free or low-cost entertainment options like community events or streaming services.",
+        'Groceries': "Plan meals, buy in bulk, and avoid impulse buys to cut grocery bills.",
+        'Health': "Check if you can switch to a cheaper gym or home workouts; review medical bills carefully.",
+        'Rent': "Evaluate if you can negotiate rent or consider downsizing if possible.",
+        'Other': "Review your miscellaneous spending carefully and identify areas to cut back."
+    }
+
+    st.markdown(f"**Your biggest expense category:** {biggest_cat} (${biggest_cat_amount:,.2f})")
+    st.markdown(f"**Tip:** {advice_dict.get(biggest_cat, 'Try to monitor this category and find ways to reduce costs.')}")
+
+    monthly_avg = monthly_sum['Amount'].mean()
+    st.markdown(f"**Your average monthly spending is:** ${monthly_avg:,.2f}")
+
+    if monthly_avg > 3000:
+        st.warning("Your spending is quite high. Consider setting a monthly budget and tracking expenses closely.")
+    elif monthly_avg > 1500:
+        st.info("Good job! Still, reviewing recurring expenses and subscriptions could help save more.")
+    else:
+        st.success("Great! Your spending is well controlled. Keep up the good budgeting habits.")
 
 else:
     st.info("Add expenses manually above or upload a CSV file to start tracking and analyzing your spending.")
