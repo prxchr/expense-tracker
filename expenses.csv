@@ -1,6 +1,50 @@
-Date,Amount,Category,Description
-2025-07-01,12.5,Food,Coffee and croissant
-2025-07-02,75,Transport,Monthly bus pass
-2025-07-03,40,Entertainment,Movie and snacks
-2025-07-04,500,Rent,July rent
-2025-07-05,20,Food,Groceries
+Date,Category,Amount,Payment Method,Description
+2024-01-01,Food,15.20,Credit Card,Breakfast at Cafe
+2024-01-02,Transport,7.50,Cash,Bus ticket
+2024-01-03,Utilities,120.00,Debit Card,Electricity bill
+2024-01-04,Entertainment,45.00,Credit Card,Movie night
+2024-01-05,Groceries,95.30,Credit Card,Weekly supermarket
+2024-01-06,Health,50.00,Cash,Pharmacy purchase
+2024-01-07,Rent,1200.00,Bank Transfer,Monthly rent
+2024-01-08,Food,12.00,Cash,Lunch takeaway
+2024-01-09,Transport,15.00,Credit Card,Taxi ride
+2024-01-10,Utilities,60.00,Debit Card,Water bill
+2024-01-11,Entertainment,30.00,Cash,Concert ticket
+2024-01-12,Groceries,80.00,Credit Card,Supermarket shopping
+2024-01-13,Health,25.00,Cash,Dentist visit
+2024-01-14,Rent,1200.00,Bank Transfer,Monthly rent
+2024-01-15,Food,20.00,Credit Card,Dinner at restaurant
+2024-01-16,Transport,5.00,Cash,Metro ticket
+2024-01-17,Utilities,70.00,Debit Card,Gas bill
+2024-01-18,Entertainment,50.00,Credit Card,Museum entry
+2024-01-19,Groceries,100.00,Credit Card,Weekly supermarket
+2024-01-20,Health,40.00,Cash,Optician appointment
+2024-01-21,Rent,1200.00,Bank Transfer,Monthly rent
+2024-01-22,Food,18.00,Cash,Brunch with friends
+2024-01-23,Transport,10.00,Credit Card,Uber ride
+2024-01-24,Utilities,65.00,Debit Card,Internet bill
+2024-01-25,Entertainment,25.00,Cash,Theater ticket
+2024-01-26,Groceries,85.00,Credit Card,Supermarket shopping
+2024-01-27,Health,30.00,Cash,Medicine
+2024-01-28,Rent,1200.00,Bank Transfer,Monthly rent
+2024-01-29,Food,14.00,Credit Card,Fast food
+2024-01-30,Transport,8.00,Cash,Bus ticket
+2024-01-31,Utilities,90.00,Debit Card,Electricity bill
+2024-02-01,Entertainment,40.00,Credit Card,Movie night
+2024-02-02,Groceries,110.00,Credit Card,Weekly supermarket
+2024-02-03,Health,35.00,Cash,Pharmacy purchase
+2024-02-04,Rent,1200.00,Bank Transfer,Monthly rent
+2024-02-05,Food,22.00,Credit Card,Dinner out
+2024-02-06,Transport,6.00,Cash,Metro ticket
+2024-02-07,Utilities,75.00,Debit Card,Gas bill
+2024-02-08,Entertainment,55.00,Credit Card,Museum visit
+2024-02-09,Groceries,90.00,Credit Card,Supermarket shopping
+2024-02-10,Health,45.00,Cash,Dentist visit
+2024-02-11,Rent,1200.00,Bank Transfer,Monthly rent
+2024-02-12,Food,19.00,Cash,Brunch
+2024-02-13,Transport,12.00,Credit Card,Taxi ride
+2024-02-14,Utilities,68.00,Debit Card,Internet bill
+2024-02-15,Entertainment,28.00,Cash,Concert ticket
+2024-02-16,Groceries,95.00,Credit Card,Supermarket
+2024-02-17,Health,33.00,Cash,Medicine
+2024-02-18,Rent,1200.00,Bank Transfer,Monthly rent
