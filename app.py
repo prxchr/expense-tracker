@@ -35,7 +35,7 @@ if uploaded_file:
 
     # KPIs
     total_spent = filtered['Amount'].sum()
-    avg_per_month = filtered.groupby(filtered['Date'].dt.to_period("M")).sum()['Amount'].mean()
+    avg_per_month = filtered.groupby(filtered['Date'].dt.to_period("M"))['Amount'].sum().mean()
     max_expense = filtered['Amount'].max()
     num_transactions = filtered.shape[0]
 
@@ -59,3 +59,4 @@ if uploaded_file:
 
 else:
     st.info("Please upload a CSV file to get started.")
+
